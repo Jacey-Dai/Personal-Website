@@ -3,86 +3,91 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f3f4ed" />
+    <meta name="theme-color" content="#eff3ed" />
     <meta
       name="description"
-      content="An evolving personal island of projects, experiences, and curiosities. Interactive prototype; personal content coming soon."
+      content="Explore a small personal island: a project studio, experience museum, curiosity greenhouse, and a few things in progress."
     />
     <title>A little world · Personal island</title>
   </head>
   <body>
-    <a class="skip-link" href="#places">Skip to places</a>
-    <header class="site-header">
+    <a class="skip-link" href="#places">Skip to the island buildings</a>
+    <header class="map-toolbar">
       <a class="wordmark" href="#" aria-label="Island overview"
-        ><svg class="brand-star" viewBox="0 0 32 32" aria-hidden="true">
+        ><svg viewBox="0 0 32 32" aria-hidden="true">
           <path
             d="M16 2 20 12 30 16 20 20 16 30 12 20 2 16 12 12Z"
             fill="currentColor"
-          />
-          <circle cx="16" cy="16" r="3" fill="#f3f4ed" /></svg
+          /></svg
         ><span>A LITTLE WORLD<small>A PERSONAL ISLAND</small></span></a
       >
       <nav aria-label="Quick navigation" id="navigation"></nav>
     </header>
-    <main id="app" class="atlas-shell">
-      <section class="intro" aria-labelledby="headline">
-        <p class="eyebrow">
-          <span class="status-dot"></span> ALWAYS A LITTLE CURIOUS
-        </p>
-        <h1 id="headline">A little world,<br />still <em>unfolding.</em></h1>
-        <p class="intro-description">
-          A small island of things I make,<br class="desktop-break" />
-          paths I take, and ideas I’m growing.
-        </p>
-        <a class="start-link" href="#about"
-          >Meet me at the welcome center <span aria-hidden="true">→</span></a
-        >
-        <div class="intro-actions">
-          <a href="#resume">Resume <span aria-hidden="true">↗</span></a
-          ><a href="#contact">Say hello <span aria-hidden="true">↗</span></a>
-        </div>
-        <div class="explorer-note">
-          <span class="note-orbit" aria-hidden="true">✧</span>
-          <p>No itinerary needed.<br />Follow your curiosity.</p>
-        </div>
-        <p class="prototype-label">
-          FRAMEWORK PREVIEW<br />Personal introduction & stories coming soon.
-        </p>
-      </section>
-      <section class="world" aria-label="Explore the personal island">
-        <div class="world-caption">
-          <span>THE ISLAND AT A GLANCE</span><span class="caption-rule"></span
-          ><span>SELECT A PLACE</span>
-        </div>
+    <main class="world" aria-label="Explore the personal island">
+      <h1 class="sr-only">A little world to explore</h1>
+      <div class="map-plane">
         <div id="island-art" aria-hidden="true"></div>
-        <div id="building-targets" aria-hidden="true"></div>
-        <div class="locations" id="places" tabindex="-1"></div>
-        <a
-          class="boat-link boat"
-          href="#currently"
-          aria-label="Explore what is happening now"
-          ><span aria-hidden="true">⌁</span> Where next?</a
-        >
-        <div class="compass" aria-hidden="true">
-          <span>N</span>✧<small>S</small>
-        </div>
-        <p class="world-note">A few places.<br />Many possibilities.</p>
-      </section>
-    </main>
-    <footer class="site-footer">
-      <span>FIVE PLACES. ONE GROWING WORLD.</span
-      ><span id="visit-count" role="status">0 / 5 places explored</span
-      ><a href="#credits"
-        >Made with a little curiosity <span aria-hidden="true">↗</span></a
-      >
-    </footer>
-    <dialog id="detail" aria-labelledby="detail-title">
-      <div class="dialog-top">
-        <a href="#" class="back-link">← Back to the island</a
-        ><span id="detail-location"></span
-        ><button id="close-detail" aria-label="Close details">×</button>
+        <svg
+          id="building-states"
+          viewBox="0 0 1800 1400"
+          aria-hidden="true"
+        ></svg>
+        <div id="places" tabindex="-1"></div>
       </div>
-      <div id="detail-content"></div>
+    </main>
+    <aside class="map-corner">
+      <p id="explore-hint">Hover a building. See what’s inside.</p>
+      <span class="small-rule"></span>
+      <p>Five places. Your own way around.</p>
+    </aside>
+    <div class="map-controls">
+      <details class="map-help">
+        <summary>How to explore</summary>
+        <p>
+          Hover or focus a building to see its name. Press Enter to step inside.
+        </p>
+        <p>
+          On a touchscreen, tap once to identify a building, then tap again to
+          enter. Quick navigation opens a room directly.
+        </p>
+        <p>
+          Lights and flags remember the places you’ve explored on this browser.
+        </p>
+      </details>
+      <button id="reset-lights" type="button" hidden>Reset lights</button
+      ><a href="#credits">Credits</a>
+    </div>
+    <div id="map-tooltip" class="map-tooltip" role="tooltip" hidden>
+      <strong></strong><small></small>
+      <p></p>
+      <span class="touch-hint">Tap again to step inside →</span>
+    </div>
+    <p class="sr-only" id="explore-status" role="status"></p>
+    <dialog id="room" aria-labelledby="room-title">
+      <div class="room-toolbar">
+        <button id="close-room" type="button" aria-label="Return to island">
+          ← Back to the island
+        </button>
+        <nav id="room-navigation" aria-label="Room navigation"></nav>
+      </div>
+      <div id="room-content"></div>
+    </dialog>
+    <dialog id="reader" aria-labelledby="reader-title">
+      <div class="reader-toolbar">
+        <button id="close-reader" type="button" aria-label="Close reading">
+          ← Back to the room</button
+        ><label class="sr-only" for="reader-destination">Quick navigation</label
+        ><select id="reader-destination">
+          <option value="">Go to…</option>
+          <option value="about">About</option>
+          <option value="projects">Projects</option>
+          <option value="experience">Experience</option>
+          <option value="beyond">Beyond</option>
+          <option value="resume">Resume</option>
+          <option value="contact">Contact</option></select
+        ><a href="#" class="reader-island-link">Island overview</a>
+      </div>
+      <div id="reader-content"></div>
     </dialog>
     <script type="module" src="/src/main.js"></script>
   </body>

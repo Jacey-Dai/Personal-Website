@@ -1,5 +1,11 @@
 # Decision log
 
+## Current interaction correction
+
+- Owner explicitly rejected the homepage building list, always-visible map nameplates, text-only visited status and ordinary webpage interiors.
+- Latest implementation: map-only homepage on all devices; hover/focus names, first-tap identification on touch; projected building-window light and roof flags; full spatial interiors with interactable desks/exhibits/plants/notes, then readable artifacts.
+- Earlier decisions about a mobile vertical route and generic section panels are superseded. See `spatial-experience.md` for the current contract.
+
 ## Confirmed by the owner
 
 - Combine A's sea, boat, bridge and exploration feeling with B's overall floating island.

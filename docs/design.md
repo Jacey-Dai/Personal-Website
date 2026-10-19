@@ -1,5 +1,7 @@
 # Personal island: design and development plan
 
+**Current interaction contract:** see `spatial-experience.md`. The owner has replaced the earlier homepage cards/mobile route and ordinary content panels with a map-only homepage, on-demand building identification, physical visit changes, and scene-based interiors. Sections below document the earlier composition and content plan; conflicting interaction details are historical.
+
 ## Composition
 
 An imaginary island inside a floating patch of sea. A visible soil underside makes this a complete miniature world; water fading outward suggests further exploration. Use a shallow isometric viewpoint, a compact silhouette, and short internal routes. No globe rotation, geographic travel, or mandatory game mechanics.

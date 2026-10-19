@@ -1,6 +1,6 @@
 # Personal Website · A Little World
 
-An interactive floating personal island surrounded by an explorable sea. Model-rendered scenery in a soft palette, five destinations, readable content layers, a dedicated mobile route, and direct navigation for recruiters. This is a framework prototype with explicit placeholders, not a completed biography.
+An interactive floating personal island surrounded by an explorable sea. A map-only homepage, five buildings with hover/focus identification, persistent window lights and roof flags, and spatial interiors with objects to open. Read projects as blueprints, experience as museum records, and interests as garden notes. This remains a prototype with explicit personal-content placeholders.
 
 ## Local development
 
@@ -23,6 +23,8 @@ npx playwright test
 
 `npm test` validates content/navigation contracts; Playwright checks actual routing, keyboard return focus, history, mobile layout and reduced motion. The production build outputs `dist/`.
 
+Current interaction/authoring contract: [docs/spatial-experience.md](docs/spatial-experience.md). Both mobile and desktop now show the map rather than a lower building list. On touch, tap once to identify and again to enter. Escape returns from reading to room, then to island.
+
 On machines with an existing Chromium installation, use `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium npx playwright test` instead of downloading another browser. If the default npm cache is not writable, pass `--cache /tmp/personal-island-npm-cache` to installation commands.
 
 ## Structure and collaboration
@@ -30,6 +32,9 @@ On machines with an existing Chromium installation, use `PLAYWRIGHT_CHROMIUM_EXE
 An isolated art-direction sample lives at `art-study.html`: two color treatments using the owner-supplied CC0 Quaternius models. It does not replace the homepage. Reproduction and decisions: [docs/art-study.md](docs/art-study.md).
 
 - `src/content.js`: personal content and explicit placeholders.
+- `src/interiors.js`: room spaces and object hotspots.
+- `src/notebooks.js`: readable blueprints, archive records, garden journals, notes and guestbook.
+- `src/building-layers.json` and `src/interior-layout.json`: generated geometry for interaction/visit state.
 - `src/world.js` and `src/map-layout.json`: scene reference and map anchors.
 - `tools/render_island.py`: editable model scene; reproduction in `docs/framework.md`.
 - `src/main.js`: accessible navigation, dialogs, visits and hash routes.

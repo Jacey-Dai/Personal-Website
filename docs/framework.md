@@ -1,5 +1,7 @@
 # Soft-color personal island framework
 
+Historical framework iteration. Its composition/render reproduction still applies. The homepage lists, persistent labels, visited badges and generic content layers have been superseded by `spatial-experience.md` according to the owner's latest corrections.
+
 ## Scope
 
 The owner liked the Quaternius sample palette and requested lower overall saturation and a working web skeleton. The active homepage is now a complete island, replacing the original flat SVG illustration. It is still a content scaffold: no employers, achievements, project outcomes or social URLs have been invented.
