@@ -2,6 +2,8 @@
 
 ## Assets actually used
 
+The separate `art-study.html` prototype uses owner-supplied Quaternius models from `assets/source-packs`, pinned at `7b16930628d5adc01c6e5f98afde99199ea21e3a`. Medieval Village and Stylized Nature Standard license files explicitly state CC0 1.0 and are retained in `docs/licenses/`. See `docs/art-study.md` and `tools/extract_art_sample.py` for selection and reproduction. Downtown was reviewed but is not used. The main island below remains the original SVG version.
+
 - src/world.js: original SVG geometry authored for this repository: terrain, sea, buildings, greenhouse, wheel, boat, bridge, pier, trees and flowers. No third-party image files.
 - Fonts: local system font stack and Georgia. No remote font requests.
 - Motion: local CSS transforms/opacity. No animation library or video assets.

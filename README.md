@@ -27,6 +27,8 @@ On machines with an existing Chromium installation, use `PLAYWRIGHT_CHROMIUM_EXE
 
 ## Structure and collaboration
 
+An isolated art-direction sample lives at `art-study.html`: two color treatments using the owner-supplied CC0 Quaternius models. It does not replace the homepage. Reproduction and decisions: [docs/art-study.md](docs/art-study.md).
+
 - `src/content.js`: personal content and explicit placeholders.
 - `src/world.js`: original editable SVG artwork.
 - `src/main.js`: accessible navigation, dialogs, visits and hash routes.

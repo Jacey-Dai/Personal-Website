@@ -19,3 +19,11 @@
 ## Not final
 
 Palette, fonts, personal name/positioning, final architecture details, case-study layouts, custom domain, camera movement, mobile scene fragments, and Professional version styling.
+
+## Art direction study after first publication
+
+- Owner rejected the muted SVG illustration style and requested bold colors and game-like volume.
+- Owner provided Quaternius Medieval Village, Downtown City and Stylized Nature Standard assets via `assets/source-packs`.
+- License notices checked: CC0 1.0. Medieval + Nature are tested in a separate coastal sample, with original sea/terrain/boat and recolored materials.
+- `art-study.html` compares two palettes using static pre-rendered WebP images. This does not change the homepage or commit to live 3D.
+- Final choice awaits viewing the sample; see `docs/art-study.md`.
