@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f3e8" />
+    <meta name="description" content="An evolving personal island of projects, experiences, and curiosities. Interactive prototype; personal content coming soon." />
+    <title>A little world · Personal island</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#places">Skip to places</a>
+    <header class="site-header">
+      <a class="wordmark" href="#" aria-label="Island overview"><span class="brand-star" aria-hidden="true">✳</span> A LITTLE WORLD<span class="edition"> / VOL. 01</span></a>
+      <nav aria-label="Quick navigation" id="navigation"></nav>
+    </header>
+    <main id="app">
+      <section class="intro" aria-labelledby="headline">
+        <div><p class="eyebrow">A PERSONAL ISLAND · A WORK IN PROGRESS</p><h1 id="headline">A little world.<br />A sea of possibilities<span>.</span></h1></div>
+        <div class="intro-note"><p>A place for things I make,<br />paths I take, and what makes me curious.</p><a href="#about">Start at the welcome center <span aria-hidden="true">↗</span></a><p class="prototype-label">DESIGN PROTOTYPE · PERSONAL CONTENT TO COME</p></div>
+      </section>
+      <section class="world" aria-label="Explore the personal island">
+        <div class="world-caption"><span class="status-dot"></span> OPEN FOR EXPLORING <span class="caption-rule"></span> PICK A PLACE TO BEGIN</div>
+        <div id="island-art" aria-hidden="true"></div>
+        <div class="locations" id="places" tabindex="-1"></div>
+        <a class="boat-link" href="#currently" aria-label="Explore what is happening now">Where next? ↗</a>
+        <div class="compass" aria-hidden="true"><span>N</span>✧<small>S</small></div>
+        <p class="world-note">No itinerary needed.<br />Follow your curiosity.</p>
+      </section>
+      <footer class="site-footer"><span>FIVE PLACES. ONE GROWING WORLD.</span><span id="visit-count" role="status">0 / 5 places explored</span><a href="#contact">Say hello ↗</a></footer>
+    </main>
+    <dialog id="detail" aria-labelledby="detail-title"><div class="dialog-top"><a href="#" class="back-link">← Back to the island</a><button id="close-detail" aria-label="Close details">×</button></div><div id="detail-content"></div></dialog>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

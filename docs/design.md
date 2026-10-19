@@ -1,0 +1,34 @@
+# Personal island: design and development plan
+
+## Composition
+
+An imaginary island inside a floating patch of sea. A visible soil underside makes this a complete miniature world; water fading outward suggests further exploration. Use a shallow isometric viewpoint, a compact silhouette, and short internal routes. No globe rotation, geographic travel, or mandatory game mechanics.
+
+The Welcome Center sits centrally; Experience Museum is northwest; Project Studio southwest; Curiosity Garden southeast; Currently northeast. A southern pier meets a small boat. A short eastern bridge leads to a nearby rock. Keep all essential information on the main island. Distant scenery must not appear interactive without content.
+
+## Visual direction (provisional)
+
+Warm paper, sea glass water, sage terrain, coral roofs, muted blue structures, and yellow accents. Final colors, saturation, typefaces, and bespoke building details await feedback. Use horizontal readable labels and paper-backed text. Avoid stock-art collage and overly childish motifs.
+
+The current framework uses original editable SVG, not the generated concept image as a clickable background. The generated reference is a composition aid only. Personal details should eventually determine objects and architecture.
+
+## Interaction
+
+Direct quick navigation: About, Projects, Experience, Beyond, Resume, Contact. All five map locations are links with visible standard labels. Hover and focus reveal previews. Hash links open a native accessible dialog; Escape, close, back-to-island, and browser history work. Return focus to the originating control. Visited marks are optional session-local decoration, never a gate.
+
+First implementation uses a short panel entrance rather than a map zoom; validate composition before adding camera movement. The boat opens Currently. The wheel and bridge are decorative in this iteration. No fake interactive scenery.
+
+Mobile shows a small world overview followed by a vertical path of full-sized destination cards with previews. It does not shrink the desktop hotspots. Longer-term: attach bespoke scene fragments to each route section.
+
+## Content
+
+Projects: problem, role/team, methods, process/decisions, outcome/evidence, reflection/links. Experience: readable work/internship and education records, later connected to related projects. Garden: community, volunteering, leadership, and small personal stories. Currently: short dated learning/making/exploring entries. Missing real data remains explicitly marked.
+
+## Stages
+
+1. Framework: original vector world, five places, mobile route, details, hash links, motion preferences, documentation and build pipeline.
+2. Visual prototype feedback: island/sea balance, illustration style, color tests, navigation readability. Confirm primary language; current English copy is provisional.
+3. Real content and distinctive details: verified profile, project case studies, timeline, garden stories, resume/social links.
+4. Refinement: scene fragments on mobile, optional tiny camera approach, a meaningful personal Easter egg, accessibility/performance review and publication.
+
+Professional version can reuse content data in a linear reading layout. Do not create a second source of truth for projects or resume information.
