@@ -152,7 +152,13 @@ test("each interior has objects and its own reading artifact", async ({
       "data-artifact",
       theme,
     );
-    await expect(page.locator(".content-pending")).toBeVisible();
+    if (room === "beyond") {
+      await expect(page.locator(".content-pending")).toBeVisible();
+    } else {
+      await expect(page.locator(".content-pending")).toHaveCount(0);
+      const content = { about: "Jacey Dai", experience: "Technology Services Help Desk, UIUC", currently: "AI agents and product" }[room];
+      await expect(page.locator("#reader-content")).toContainText(content);
+    }
     await page.keyboard.press("Escape");
     await expect(page.locator("#reader")).toBeHidden();
     await page.keyboard.press("Escape");
@@ -228,7 +234,11 @@ test("reduced motion and direct resume/contact access remain available", async (
   await page.goto("#resume");
   await expect(page.locator("#room-title")).toHaveText("Welcome Center");
   await expect(page.locator("#reader-title")).toHaveText("Resume");
-  await expect(page.getByText(/Resume not added yet/)).toBeVisible();
+  const pdf = page.getByRole("link", { name: "Open resume PDF" });
+  await expect(pdf).toBeVisible();
+  const response = await page.request.get(await pdf.getAttribute("href"));
+  expect(response.status()).toBe(200);
+  expect(response.headers()["content-type"]).toContain("application/pdf");
   expect(
     await page
       .locator("#room")
@@ -236,6 +246,8 @@ test("reduced motion and direct resume/contact access remain available", async (
   ).toBe("none");
   await page.locator("#reader-destination").selectOption("contact");
   await expect(
-    page.getByText(/Contact details are not published/),
+    page.getByRole("link", { name: /Email.*jacey.dai827@gmail.com/ }),
   ).toBeVisible();
+  await expect(page.getByRole("link", { name: /LinkedIn.*linkedin.com/ })).toHaveAttribute("href", "https://www.linkedin.com/in/jacey-dai/");
+  await expect(page.getByRole("link", { name: /GitHub.*github.com/ })).toHaveAttribute("href", "https://github.com/Jacey-Dai");
 });

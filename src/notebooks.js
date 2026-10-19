@@ -4,6 +4,15 @@ import {
   projectTemplate,
   utilityPages,
 } from "./content.js";
+import { profile, education, experience } from "./profile.js";
+
+const resumeUrl = `${import.meta.env?.BASE_URL ?? "/Personal-Website/"}${profile.resume}`;
+const contactLinks = () => links([
+  [`mailto:${profile.email}`, "Email", profile.email],
+  [profile.linkedin, "LinkedIn", "linkedin.com/in/jacey-dai"],
+  [profile.github, "GitHub", "github.com/Jacey-Dai"],
+]);
+const records = (items) => items.map((item) => `<section class="paper-section"><h3>${item.organization}</h3><p><strong>${item.role}</strong></p><p>${item.dates} · ${item.location}</p><ul>${item.details.map((detail) => `<li>${detail}</li>`).join("")}</ul></section>`).join("");
 
 const pending =
   '<p class="content-pending">Personal content has not been added yet. These are clearly marked placeholders.</p>';
@@ -27,7 +36,7 @@ export function artifactFor(roomId, key) {
         ? "THE ISLAND / MAKING OF"
         : "WELCOME CENTER / " + (key === "resume" ? "BROCHURE" : "LETTERS"),
       page.title,
-      `<p class="paper-lead">${page.text}</p>${key === "credits" ? '<p><a class="paper-link" href="https://quaternius.com/">Quaternius · Asset creator</a></p>' : pending}`,
+      `<p class="paper-lead">${page.text}</p>${key === "credits" ? '<p><a class="paper-link" href="https://quaternius.com/">Quaternius · Asset creator</a></p>' : key === "resume" ? `<p><a class="paper-link" href="${resumeUrl}" target="_blank" rel="noopener">Open resume PDF ↗</a></p><p><a class="paper-link" href="${resumeUrl}" download="Jacey_Dai_Resume.pdf">Download resume ↓</a></p>` : contactLinks()}`,
     );
   }
   if (roomId === "projects") {
@@ -52,7 +61,7 @@ export function artifactFor(roomId, key) {
         "archive",
         "EXPERIENCE MUSEUM / CATALOGUE",
         "The collected chapters.",
-        `${pending}${links([
+        `${links([
           ["#experience/work", "Work & internships", "Open the work archive"],
           ["#experience/education", "Education", "Open the learning exhibit"],
         ])}`,
@@ -62,16 +71,17 @@ export function artifactFor(roomId, key) {
       "archive",
       `EXPERIENCE MUSEUM / ${key === "education" ? "EXHIBIT 02" : "ARCHIVE 01"}`,
       item[0],
-      `${pending}<div class="archive-stamp">RECORD TO BE ADDED</div><dl class="archive-fields"><div><dt>${key === "education" ? "School" : "Organization"}</dt><dd>[To add]</dd></div><div><dt>${key === "education" ? "Degree" : "Role"}</dt><dd>[To add]</dd></div><div><dt>Dates</dt><dd>[To add]</dd></div></dl>${ruled("The record", item[1])}${ruled("Contributions & learning", "[To add: verified responsibilities, learning, and evidence.]")}<a class="paper-link" href="#experience/index">← Archive catalogue</a>`,
+      `${records(key === "education" ? education : experience)}<p class="paper-footnote">From my resume.</p><a class="paper-link" href="#experience/index">← Archive catalogue</a>`,
     );
   }
   if (roomId === "beyond") {
+    if (key === "curiosities") return wrap("journal", "CURIOSITY GARDEN / SMALL JOYS", "A little room for succulents.", `${ruled("Small joys", profile.interest)}<a class="paper-link" href="#beyond/index">← Garden journal</a>`);
     if (key === "index")
       return wrap(
         "journal",
         "CURIOSITY GARDEN / FIELD JOURNAL",
         "Things worth growing.",
-        `${pending}${links([
+        `${links([
           [
             "#beyond/community",
             "People & community",
@@ -98,23 +108,23 @@ export function artifactFor(roomId, key) {
         "notice",
         "THE NOTICEBOARD / ALL NOTES",
         "A few things in progress.",
-        `${pending}${links([
+        `${links([
           ["#currently/learning", "Learning", "Read the learning note"],
           ["#currently/making", "Making & exploring", "Read the making note"],
-        ])}<p class="paper-footnote">Last updated: awaiting the first real entry.</p>`,
+        ])}<p class="paper-footnote">Learning note updated: ${profile.updated}.</p>`,
       );
     const item = place.sections[key === "learning" ? 0 : 1];
     return wrap(
       "notice",
       "TAKEN FROM THE NOTICEBOARD",
       item[0],
-      `<span class="paper-pin" aria-hidden="true"></span>${pending}<p class="paper-lead">${item[1]}</p><p class="paper-footnote">Last updated: to be added.</p><a class="paper-link" href="#currently/index">← All pinned notes</a>`,
+      `<span class="paper-pin" aria-hidden="true"></span>${key === "learning" ? "" : pending}<p class="paper-lead">${item[1]}</p><p class="paper-footnote">${key === "learning" ? `Last updated: ${profile.updated}.` : "Last updated: to be added."}</p><a class="paper-link" href="#currently/index">← All pinned notes</a>`,
     );
   }
   return wrap(
     "guestbook",
     "WELCOME CENTER / THE GUESTBOOK",
-    "Hello, [your name].",
-    `${pending}<p class="paper-lead">[Your one-line introduction]</p>${place.sections.map(([title, text]) => ruled(title, text)).join("")}<div class="guestbook-links"><a href="#resume">Pick up a resume brochure →</a><a href="#contact">Leave a little hello →</a></div>`,
+    `Hello, I’m ${profile.name}.`,
+    `<p class="paper-lead">${profile.introduction}</p>${ruled("Education", "Studying Interdisciplinary Data Science at Duke University, with a background in Mathematics and Statistics from the University of Illinois Urbana-Champaign.")}<div class="guestbook-links"><a href="#resume">Pick up a resume brochure →</a><a href="#contact">Leave a little hello →</a></div>${contactLinks()}`,
   );
 }

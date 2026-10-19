@@ -1,3 +1,4 @@
+import { profile } from "./profile.js";
 // Replace explicit placeholders with verified personal content. Never invent achievements.
 export const places = [
   {
@@ -8,11 +9,11 @@ export const places = [
     preview: "Meet the person behind this little world.",
     color: "coral",
     title: "Every world starts with a hello.",
-    description: "This is where your introduction will live.",
+    description: profile.introduction,
     sections: [
       [
-        "Your introduction",
-        "[To add: preferred name, a one-line introduction, and a short About.]",
+        "Hello, I’m Jacey.",
+        profile.introduction,
       ],
       [
         "Your direction",
@@ -74,7 +75,7 @@ export const places = [
       ],
       [
         "Small joys",
-        "[To add: genuine interests, personal objects, and everyday discoveries. Baking can join when there is a story to share.]",
+        profile.interest,
       ],
     ],
   },
@@ -89,7 +90,7 @@ export const places = [
     description:
       "A small, easy-to-update noticeboard. Only publish what is actually happening.",
     sections: [
-      ["Learning", "[To add: what you are learning now.]"],
+      ["Learning", profile.learning],
       [
         "Making & exploring",
         "[To add: a current experiment or question, plus the date of the update.]",
@@ -110,11 +111,11 @@ export const projectTemplate = [
 export const utilityPages = {
   resume: {
     title: "Resume",
-    text: "Resume not added yet. A direct PDF download will appear here once the real document is provided.",
+    text: "Read or download Jacey Dai’s resume as a PDF.",
   },
   contact: {
     title: "Let’s connect.",
-    text: "Contact details are not published yet. Your verified email, LinkedIn, and GitHub links will appear here.",
+    text: "Find me on LinkedIn or GitHub, or say hello by email.",
   },
   credits: {
     title: "A world made together.",
