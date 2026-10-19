@@ -27,3 +27,12 @@ Palette, fonts, personal name/positioning, final architecture details, case-stud
 - License notices checked: CC0 1.0. Medieval + Nature are tested in a separate coastal sample, with original sea/terrain/boat and recolored materials.
 - `art-study.html` compares two palettes using static pre-rendered WebP images. This does not change the homepage or commit to live 3D.
 - Final choice awaits viewing the sample; see `docs/art-study.md`.
+
+## Complete model-based framework
+
+- Owner approved the sample color direction and requested slightly lower saturation, without requiring maximum vividness.
+- Active homepage now uses the complete soft-color model-rendered island. Coral is the working roof direction; final palette can still be tuned.
+- Five destinations have different silhouettes: central kiosk/plaza, studio, museum with entry columns, greenhouse, noticeboard kiosk. Sea, sailboat, pier, bridge and observation wheel remain part of the world.
+- Static pre-rendering keeps page runtime light. HTML supplies map links, keyboard access, previews, visited marks, and differentiated content layers. Building pointer targets duplicate visible keyboard-accessible labels; they are hidden from assistive technology and on mobile.
+- Project draft routes (`#projects/project-01`) preview a real case-study structure but contain no invented projects. Experience, Garden and Currently have their own layouts.
+- Current public name, actual biography, links, resume, and primary language are still awaiting content. Existing English copy remains provisional.

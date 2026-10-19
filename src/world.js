@@ -1,36 +1,5 @@
-// Original, editable vector artwork. Coordinates use a single 1200 × 760 viewBox.
-const tree = (x,y,s=1) => `<g transform="translate(${x} ${y}) scale(${s})"><path d="M0 0v-37" stroke="#5a6045" stroke-width="5"/><path d="M-16-27Q-23-50-7-63Q8-81 19-55Q35-32 16-23Z" fill="#658d65" stroke="#33584e" stroke-width="2"/><path d="M1-27v-25" stroke="#33584e" stroke-width="2"/></g>`;
-const flower = (x,y,c) => `<g transform="translate(${x} ${y})"><path d="M0 0v-12" stroke="#497260" stroke-width="2"/><circle cy="-15" r="5" fill="${c}"/><circle cy="-15" r="2" fill="#f9e9a9"/></g>`;
-const windows = (x,y,n) => Array.from({length:n},(_,i)=>`<rect x="${x+i*24}" y="${y}" width="12" height="20" rx="5" fill="#ffe7a4" stroke="#344e57" stroke-width="2"/>`).join('');
-
-export const worldSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" fill="none">
-<defs><radialGradient id="sea"><stop stop-color="#b4dcd8"/><stop offset=".7" stop-color="#c9e4de"/><stop offset="1" stop-color="#edf0e4" stop-opacity="0"/></radialGradient><pattern id="grain" width="17" height="17" patternUnits="userSpaceOnUse"><circle cx="3" cy="8" r=".7" fill="#294b4a" opacity=".11"/></pattern></defs>
-<ellipse cx="599" cy="428" rx="577" ry="300" fill="url(#sea)"/>
-<g class="waves" stroke="#72a8aa" stroke-width="2" stroke-linecap="round" opacity=".55"><path d="M113 340q13 8 26 0m-52 90q13 8 26 0m44 105q16 8 32 0m752-222q13 8 26 0m-3 119q16 8 32 0m-83 159q13 8 26 0M358 668q18 7 36 0m345 7q20 8 40 0M300 182q18 7 36 0m500-3q18 7 36 0"/><path d="M202 275q11 6 22 0m-20 292q11 6 22 0m766-57q11 6 22 0m-161 111q14 6 28 0"/></g>
-<ellipse cx="600" cy="595" rx="300" ry="53" fill="#5c9594" opacity=".11"/>
-<path d="M270 432Q291 562 450 602L570 660L664 644L737 584Q881 569 931 430Z" fill="#c29c77" stroke="#4a655a" stroke-width="3"/>
-<path d="M342 487l42 57 66 58 32-103m88 161-11-103 43-40m62 127 24-104 49 44 18-76m-300 18-3 38m369-34-31 44" stroke="#987957" stroke-width="3"/>
-<path d="M572 656l-6 29m-99-92-9 26m259-34 9 24" stroke="#55725a" stroke-width="4" stroke-linecap="round"/>
-<path d="M264 406Q224 349 304 298Q322 241 421 248Q452 186 552 217Q652 166 739 228Q850 218 876 295Q963 321 933 404Q971 471 870 504Q783 566 681 543Q566 585 476 545Q365 552 323 499Q251 481 264 406Z" fill="#e9dcb1" stroke="#4a655a" stroke-width="3"/>
-<path d="M281 393Q252 351 321 310Q340 260 431 264Q462 207 555 234Q648 187 733 244Q839 237 860 307Q944 329 915 400Q952 453 862 487Q776 549 680 524Q572 565 480 526Q376 536 336 481Q270 468 281 393Z" fill="#b9ca8c"/>
-<path d="M281 393Q252 351 321 310Q340 260 431 264Q462 207 555 234Q648 187 733 244Q839 237 860 307Q944 329 915 400Q952 453 862 487Q776 549 680 524Q572 565 480 526Q376 536 336 481Q270 468 281 393Z" fill="url(#grain)"/>
-<path d="M440 348Q534 298 687 326Q811 351 805 427Q777 495 620 498Q450 500 392 427Q368 383 440 348Z" stroke="#6b8060" stroke-width="29" stroke-dasharray="3 7" opacity=".5"/>
-<path d="M440 348Q534 298 687 326Q811 351 805 427Q777 495 620 498Q450 500 392 427Q368 383 440 348Z" stroke="#eddda7" stroke-width="21"/>
-<path d="M598 400L502 284m96 116 210-79m-210 79-164 37m164-37 173 52m-173-52 14 135" stroke="#eddda7" stroke-width="23" stroke-linecap="round"/>
-<ellipse cx="598" cy="398" rx="81" ry="42" fill="#faedcc" stroke="#adad7b" stroke-width="3"/>
-<ellipse cx="598" cy="398" rx="54" ry="27" stroke="#d8bc80" stroke-width="2" stroke-dasharray="3 5"/>
-<path d="M584 400l14-23 14 23-14 15Z" fill="#d56b51"/><path d="M598 377v38m-23-18h46" stroke="#36585c" stroke-width="2"/>
-<g id="welcome-building"><path d="M557 337v-62h81v62l-40 19Z" fill="#ed967a" stroke="#37545a" stroke-width="3"/><path d="M638 275l27-13v62l-27 13Z" fill="#cd735d" stroke="#37545a" stroke-width="3"/><path d="M547 274l50-34 78 20-37 23Z" fill="#3f777d" stroke="#37545a" stroke-width="3"/><path d="M590 341v-29q9-15 18 0v29" fill="#fff0c5" stroke="#37545a" stroke-width="2"/><rect x="570" y="289" width="12" height="17" fill="#fff0c5" stroke="#37545a" stroke-width="2"/><rect x="615" y="289" width="12" height="17" fill="#fff0c5" stroke="#37545a" stroke-width="2"/><path d="M599 242v-36l25 7-25 11" fill="#e3b44f" stroke="#37545a" stroke-width="2"/></g>
-<g id="museum"><path d="M393 281v-57h102v57l-52 23Z" fill="#f3d88d" stroke="#37545a" stroke-width="3"/><path d="M495 224l25-12v57l-25 12Z" fill="#d1af69" stroke="#37545a" stroke-width="3"/><path d="M382 224l57-38 91 25-35 20Z" fill="#e67f66" stroke="#37545a" stroke-width="3"/><path d="M437 187v-24q0-23 22-23t22 23v36" fill="#537d8c" stroke="#37545a" stroke-width="3"/><ellipse cx="459" cy="140" rx="4" ry="5" fill="#e3b44f"/>${windows(404,239,4)}<path d="M386 285l56 24 61-27m-111 13 50 22 57-26" stroke="#f9e9bb" stroke-width="6"/></g>
-<g id="studio"><path d="M333 436v-66h98v66l-49 24Z" fill="#759dab" stroke="#37545a" stroke-width="3"/><path d="M431 370l35-17v65l-35 18Z" fill="#4c7f92" stroke="#37545a" stroke-width="3"/><path d="M323 370l53-43 100 24-45 27Z" fill="#df795d" stroke="#37545a" stroke-width="3"/><path d="M349 343v-38h15v26" fill="#edc48a" stroke="#37545a" stroke-width="3"/>${windows(344,388,3)}<path d="M404 447v-24h17v16" fill="#f8e7ba" stroke="#37545a" stroke-width="2"/><path d="M342 466l48 17m-34-28 48 17" stroke="#ad8b60" stroke-width="5"/><rect x="456" y="429" width="17" height="19" rx="2" fill="#deb558" stroke="#37545a" stroke-width="2"/></g>
-<g id="greenhouse"><path d="M745 462v-64l47-38 78 31v66l-47 28Z" fill="#d8e6c1" fill-opacity=".8" stroke="#37545a" stroke-width="3"/><path d="M745 398l78 26 47-33m-47 33v61m-31-125v64m-22-44v89m68-67v74m16-83v74m-109-41 78 27 47-29" stroke="#638e79" stroke-width="3"/><path d="M763 450v-24m0 13q-21-19-13-23 17 0 13 23m0 2q20-20 21-9-2 11-21 9m77 16v-30m0 15q-19-17-17-24 16 0 17 24" stroke="#4c805a" stroke-width="4"/><path d="M803 478v-27l16 5v27" fill="#fff0cb" stroke="#37545a" stroke-width="2"/></g>
-<g id="noticeboard"><path d="M772 324v-64m70 51v-64" stroke="#6e7050" stroke-width="7"/><path d="M758 253l96-14v63l-96 14Z" fill="#c89b62" stroke="#37545a" stroke-width="3"/><path d="M769 264l29-4v31l-29 4Zm38-6 32-5v16l-32 5Z" fill="#fff0cb"/><path d="M807 283l30-5" stroke="#e67965" stroke-width="5"/><path d="M759 251l95-14" stroke="#37545a" stroke-width="5"/></g>
-<g id="pier" stroke="#6e7259"><path d="M593 534l17 71 47-10-28-65" fill="#c69d6f" stroke-width="3"/><path d="M599 548l36-7m-33 19 38-8m-35 20 40-8m-36 21 41-9m-37 21 43-9" stroke-width="2"/><path d="M588 534l13 61m31-69 22 59" stroke-width="4"/></g>
-<g class="boat"><path d="M686 598q27 26 65-6l-10 27q-29 19-49 0Z" fill="#d77759" stroke="#37545a" stroke-width="3"/><path d="M717 600v-59l-24 48h24m6-40 27 40h-27Z" fill="#fff4d7" stroke="#37545a" stroke-width="2"/><path d="M684 631q35 8 68-4" stroke="#77a8a8" stroke-width="2"/></g>
-<g id="bridge"><path d="M880 454q29 11 68-18l10 15q-39 32-73 20Z" fill="#cea879" stroke="#53685a" stroke-width="2"/><path d="M886 450q30 10 61-20m-58 33q27 9 64-22" stroke="#53685a" stroke-width="3"/></g>
-<path d="M940 440q17-28 43-14l13 26-24 17-22-8Z" fill="#c7d09d" stroke="#71836e" stroke-width="2"/>
-<g id="wheel" stroke="#547b75" stroke-width="3"><path d="M868 354l14-63 18 55"/><circle cx="882" cy="293" r="29" fill="#f5e5b7"/><path d="M853 293h58m-29-29v58m-20-49 40 40m-40 0 40-40"/><circle cx="882" cy="293" r="5" fill="#e17a5f"/><path d="M855 274v9m53-9v9m-26 35v9" stroke="#df795d" stroke-width="9"/></g>
-${[[339,301,.8],[370,255,.7],[530,250,.65],[704,267,.9],[741,244,.75],[850,352,.55],[312,414,.6],[487,499,.65],[867,479,.65],[697,496,.6]].map(t=>tree(...t)).join('')}
-${[[710,453,'#e68778'],[720,465,'#efc85e'],[729,477,'#f6edca'],[696,463,'#efc85e'],[748,502,'#e68778'],[363,474,'#f5ead3'],[370,486,'#e68778'],[511,332,'#e68778'],[521,339,'#f8e9bc']].map(f=>flower(...f)).join('')}
-<g stroke="#5d7f7a" stroke-width="2" stroke-linecap="round"><path d="M1007 280q7-7 14 0 7-7 14 0M217 235q6-6 12 0 6-6 12 0"/></g>
-</svg>`;
+// Pre-rendered from the owner's CC0 Quaternius assets. See tools/render_island.py.
+import layout from "./map-layout.json";
+export const mapLayout = layout;
+export const islandImage = `${import.meta.env.BASE_URL}island/soft-island.webp`;
+export const worldArt = `<img class="island-image" src="${islandImage}" width="1800" height="1400" alt="" fetchpriority="high" decoding="async" /><div class="sea-glimmer" aria-hidden="true"></div>`;

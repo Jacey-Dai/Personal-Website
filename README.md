@@ -1,6 +1,6 @@
 # Personal Website · A Little World
 
-An interactive floating personal island surrounded by an explorable sea. Original SVG scenery, five destinations, readable details, a dedicated mobile route, and direct navigation for recruiters. This is a framework prototype with explicit placeholders, not a completed biography.
+An interactive floating personal island surrounded by an explorable sea. Model-rendered scenery in a soft palette, five destinations, readable content layers, a dedicated mobile route, and direct navigation for recruiters. This is a framework prototype with explicit placeholders, not a completed biography.
 
 ## Local development
 
@@ -30,7 +30,8 @@ On machines with an existing Chromium installation, use `PLAYWRIGHT_CHROMIUM_EXE
 An isolated art-direction sample lives at `art-study.html`: two color treatments using the owner-supplied CC0 Quaternius models. It does not replace the homepage. Reproduction and decisions: [docs/art-study.md](docs/art-study.md).
 
 - `src/content.js`: personal content and explicit placeholders.
-- `src/world.js`: original editable SVG artwork.
+- `src/world.js` and `src/map-layout.json`: scene reference and map anchors.
+- `tools/render_island.py`: editable model scene; reproduction in `docs/framework.md`.
 - `src/main.js`: accessible navigation, dialogs, visits and hash routes.
 - `src/styles.css`: responsive layout, provisional palette, motion preferences.
 - `docs/design.md`: world composition and development stages.

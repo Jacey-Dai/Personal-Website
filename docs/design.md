@@ -6,11 +6,11 @@ An imaginary island inside a floating patch of sea. A visible soil underside mak
 
 The Welcome Center sits centrally; Experience Museum is northwest; Project Studio southwest; Curiosity Garden southeast; Currently northeast. A southern pier meets a small boat. A short eastern bridge leads to a nearby rock. Keep all essential information on the main island. Distant scenery must not appear interactive without content.
 
-## Visual direction (provisional)
+## Current visual direction
 
-Warm paper, sea glass water, sage terrain, coral roofs, muted blue structures, and yellow accents. Final colors, saturation, typefaces, and bespoke building details await feedback. Use horizontal readable labels and paper-backed text. Avoid stock-art collage and overly childish motifs.
+Owner approved the Quaternius-based local sample, with lower saturation. The complete island now uses soft coral roofs, blue-gray museum, sage greenhouse, cream walls, and muted sea blue. Buildings retain toy-like volume. Typography and bespoke personal details remain provisional. Use horizontal readable labels and paper-backed text.
 
-The current framework uses original editable SVG, not the generated concept image as a clickable background. The generated reference is a composition aid only. Personal details should eventually determine objects and architecture.
+The framework now uses an optimized model-rendered WebP scene with HTML location links, pointer shortcuts over buildings, and separately maintained projected map anchors. The image is decorative; content and navigation remain accessible HTML. Original SVG and earlier saturated samples are historical iterations, not the active homepage artwork. See docs/framework.md for reproduction. Personal details should eventually determine objects and architecture.
 
 ## Interaction
 
@@ -18,7 +18,7 @@ Direct quick navigation: About, Projects, Experience, Beyond, Resume, Contact. A
 
 First implementation uses a short panel entrance rather than a map zoom; validate composition before adding camera movement. The boat opens Currently. The wheel and bridge are decorative in this iteration. No fake interactive scenery.
 
-Mobile shows a small world overview followed by a vertical path of full-sized destination cards with previews. It does not shrink the desktop hotspots. Longer-term: attach bespoke scene fragments to each route section.
+Mobile shows a small world overview followed by a vertical path of full-sized destination cards with cropped scene thumbnails and previews. Desktop building shortcuts are hidden on mobile. It does not shrink desktop hotspots. Closing details restores route position.
 
 ## Content
 
