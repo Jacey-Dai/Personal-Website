@@ -42,17 +42,17 @@ document.querySelector("#places").innerHTML = places
   })
   .join("");
 const flagColors = {
-  about: "#8caa8e",
-  projects: "#cc8b78",
-  experience: "#7e96b0",
-  beyond: "#9bb487",
-  currently: "#c59aa5",
+  about: "#7f9f6f",
+  projects: "#c45c46",
+  experience: "#5f7f9e",
+  beyond: "#6f9f5f",
+  currently: "#d9a441",
 };
 document.querySelector("#building-states").innerHTML = places
   .map((p) => {
     const b = buildingLayers[p.id];
     const [x, y] = b.roof;
-    return `<g class="building-state" data-visit="${p.id}"><path class="window-light light-${p.id}" d="${b.lights}"/><g class="roof-flag" transform="translate(${x} ${y})"><path d="M0 3V-54" stroke="#69756a" stroke-width="3.5" stroke-linecap="round"/><path class="pennant" d="M2-53Q22-63 45-50L36-31Q19-41 2-32Z" fill="${flagColors[p.id]}" stroke="#fff3d6" stroke-width="2"/></g></g>`;
+    return `<g class="building-state" data-visit="${p.id}"><path class="window-light light-${p.id}" d="${b.lights}"/><g class="roof-flag" transform="translate(${x} ${y})"><path d="M0 3V-54" stroke="#5c5144" stroke-width="3.5" stroke-linecap="round"/><path class="pennant" d="M2-53Q22-63 45-50L36-31Q19-41 2-32Z" fill="${flagColors[p.id]}" stroke="#fff3d6" stroke-width="2"/></g></g>`;
   })
   .join("");
 
