@@ -1,105 +1,265 @@
 <!doctype html>
 <html lang="zh-CN">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="robots" content="noindex" />
-  <meta name="theme-color" content="#f3efe6" />
-  <title>视觉方向 · Personal island style study 02</title>
-  <link rel="stylesheet" href="/src/style-study.css" />
-</head>
-<body>
-  <main>
-    <header><a href="./">← 当前网站</a><span>STYLE STUDY 02 · PHASE 1 · 等待选择</span></header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#f3efe6" />
+    <title>视觉方向 · Personal island style study 02</title>
+    <link rel="stylesheet" href="/src/style-study.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <a href="./">← 当前网站</a
+        ><span>STYLE STUDY 02 · PHASE 1 · 等待选择</span>
+      </header>
 
-    <section class="intro">
-      <p class="kicker">视觉重设计 · 第一阶段</p>
-      <h1>三个方向，同一块海岸。</h1>
-      <p>依照 <code>docs/PRD-visual-redesign.md</code>：先审查现状，再用同一组上传的 Quaternius 模型、同一个镜头做三个确实不同的方向。每个方向包括海岸、工作室、树木、多肉、码头，悬停提示，以及对应的工作室内景和阅读卡片。选定后再全面应用到整座岛和五个室内。</p>
-    </section>
+      <section class="intro">
+        <p class="kicker">视觉重设计 · 第一阶段</p>
+        <h1>三个方向，同一块海岸。</h1>
+        <p>
+          依照
+          <code>docs/PRD-visual-redesign.md</code>：先审查现状，再用同一组上传的
+          Quaternius
+          模型、同一个镜头做三个确实不同的方向。每个方向包括海岸、工作室、树木、多肉、码头，悬停提示，以及对应的工作室内景和阅读卡片。选定后再全面应用到整座岛和五个室内。
+        </p>
+      </section>
 
-    <section class="audit" aria-labelledby="audit-title">
-      <h2 id="audit-title">现状审查</h2>
-      <div class="audit-shots">
-        <figure><img src="./style-study/current-desk.webp" width="1440" height="900" alt="当前桌面首页：浅色背景上的椭圆形蓝色海面和柔和配色的小岛。" loading="lazy" /><figcaption>桌面首页</figcaption></figure>
-        <figure><img src="./style-study/current-studio.webp" width="1440" height="900" alt="当前工作室内景：平滑无纹理的立方体家具。" loading="lazy" /><figcaption>工作室内景</figcaption></figure>
-        <figure class="narrow"><img src="./style-study/current-mobile.webp" width="390" height="844" alt="当前手机首页：小岛只占屏幕中部三分之一。" loading="lazy" /><figcaption>手机 390px</figcaption></figure>
-      </div>
-      <ol class="findings">
-        <li><strong>材质全部被覆盖。</strong><code>render_island.py</code> 把每个上传模型的灰泥、瓦片、木材都换成同一种平涂材质，所以建筑像陈列的模型，而不是有人住的地方。</li>
-        <li><strong>海面像一个盘子。</strong>一块带硬边的蓝色椭圆，加几条画上去的白线；没有浅水到深水的变化，也没有岸边浪花。</li>
-        <li><strong>道路浮在草地上。</strong>道路是压扁的线条，草地是一整块同色绿，岩石是平涂紫色。</li>
-        <li><strong>树木是塑料感的色团。</strong>树叶被改成单色并加了自发光，失去了体积和明暗。</li>
-        <li><strong>室内和室外不是同一个世界。</strong>室内是光滑的方块家具，没有使用任何上传素材；温室屋架悬在空中；标牌文字烤进了图片。</li>
-        <li><strong>手机上小岛太小。</strong>390px 宽度下小岛只占屏幕约三分之一，上下大片空白。</li>
-        <li><strong>界面较弱。</strong>导航和提示文字偏小、对比度偏低；页眉写的是 “A Little World”，没有出现 Jacey 的名字。阅读层排版清楚，但和房间没有联系。</li>
-      </ol>
-    </section>
+      <section class="audit" aria-labelledby="audit-title">
+        <h2 id="audit-title">现状审查</h2>
+        <div class="audit-shots">
+          <figure>
+            <img
+              src="./style-study/current-desk.webp"
+              width="1440"
+              height="900"
+              alt="当前桌面首页：浅色背景上的椭圆形蓝色海面和柔和配色的小岛。"
+              loading="lazy"
+            />
+            <figcaption>桌面首页</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="./style-study/current-studio.webp"
+              width="1440"
+              height="900"
+              alt="当前工作室内景：平滑无纹理的立方体家具。"
+              loading="lazy"
+            />
+            <figcaption>工作室内景</figcaption>
+          </figure>
+          <figure class="narrow">
+            <img
+              src="./style-study/current-mobile.webp"
+              width="390"
+              height="844"
+              alt="当前手机首页：小岛只占屏幕中部三分之一。"
+              loading="lazy"
+            />
+            <figcaption>手机 390px</figcaption>
+          </figure>
+        </div>
+        <ol class="findings">
+          <li>
+            <strong>材质全部被覆盖。</strong
+            ><code>render_island.py</code>
+            把每个上传模型的灰泥、瓦片、木材都换成同一种平涂材质，所以建筑像陈列的模型，而不是有人住的地方。
+          </li>
+          <li>
+            <strong>海面像一个盘子。</strong
+            >一块带硬边的蓝色椭圆，加几条画上去的白线；没有浅水到深水的变化，也没有岸边浪花。
+          </li>
+          <li>
+            <strong>道路浮在草地上。</strong
+            >道路是压扁的线条，草地是一整块同色绿，岩石是平涂紫色。
+          </li>
+          <li>
+            <strong>树木是塑料感的色团。</strong
+            >树叶被改成单色并加了自发光，失去了体积和明暗。
+          </li>
+          <li>
+            <strong>室内和室外不是同一个世界。</strong
+            >室内是光滑的方块家具，没有使用任何上传素材；温室屋架悬在空中；标牌文字烤进了图片。
+          </li>
+          <li>
+            <strong>手机上小岛太小。</strong>390px
+            宽度下小岛只占屏幕约三分之一，上下大片空白。
+          </li>
+          <li>
+            <strong>界面较弱。</strong
+            >导航和提示文字偏小、对比度偏低；页眉写的是 “A Little
+            World”，没有出现 Jacey 的名字。阅读层排版清楚，但和房间没有联系。
+          </li>
+        </ol>
+      </section>
 
-    <section class="direction d-storybook" aria-labelledby="a-title">
-      <div class="direction-head">
-        <p class="kicker">方向 A · 推荐</p>
-        <h2 id="a-title">Storybook daylight · 午后绘本</h2>
-        <p>保留上传模型的原始纹理（灰泥、圆瓦、木纹、石砖），整体饱和度降低约 12%，暖色午后阳光，海水从浅绿松石色过渡到深蓝，岸边有浪花。界面像纸张和墨水：衬线标题，提示是一张小纸签。</p>
-      </div>
-      <div class="pair">
-        <figure class="stage">
-          <img src="./style-study/storybook-coast.webp" width="1600" height="1200" alt="方向 A：纹理完整的红瓦木框工作室，暖色阳光，浅到深的青蓝海水。" />
-          <div class="tip" style="left:24%;top:34%"><strong>Project Studio</strong><small>Projects</small><p>Blueprints and prototypes on the workbench.</p></div>
-        </figure>
-        <figure class="stage room">
-          <img src="./style-study/storybook-studio.webp" width="1200" height="900" alt="方向 A 工作室内景：同样的木地板、灰泥墙和拱窗，工作台上有蓝图。" loading="lazy" />
-          <div class="card"><p class="eyebrow">Project Studio / Blueprint 01</p><h3>Project title</h3><p>Problem, role, methods and links go here once the project is written.</p></div>
-        </figure>
-      </div>
-      <ul class="meta"><li><b>保留</b>地图首页、所有交互、五个地点</li><li><b>改变</b>材质、光照、海水、道路、植物、室内、界面</li><li><b>成本</b>中等：沿用现有 Blender 流程，图片大小相近</li></ul>
-    </section>
+      <section class="direction d-storybook" aria-labelledby="a-title">
+        <div class="direction-head">
+          <p class="kicker">方向 A · 推荐</p>
+          <h2 id="a-title">Storybook daylight · 午后绘本</h2>
+          <p>
+            保留上传模型的原始纹理（灰泥、圆瓦、木纹、石砖），整体饱和度降低约
+            12%，暖色午后阳光，海水从浅绿松石色过渡到深蓝，岸边有浪花。界面像纸张和墨水：衬线标题，提示是一张小纸签。
+          </p>
+        </div>
+        <div class="pair">
+          <figure class="stage">
+            <img
+              src="./style-study/storybook-coast.webp"
+              width="1600"
+              height="1200"
+              alt="方向 A：纹理完整的红瓦木框工作室，暖色阳光，浅到深的青蓝海水。"
+            />
+            <div class="tip" style="left: 24%; top: 34%">
+              <strong>Project Studio</strong><small>Projects</small>
+              <p>Blueprints and prototypes on the workbench.</p>
+            </div>
+          </figure>
+          <figure class="stage room">
+            <img
+              src="./style-study/storybook-studio.webp"
+              width="1200"
+              height="900"
+              alt="方向 A 工作室内景：同样的木地板、灰泥墙和拱窗，工作台上有蓝图。"
+              loading="lazy"
+            />
+            <div class="card">
+              <p class="eyebrow">Project Studio / Blueprint 01</p>
+              <h3>Project title</h3>
+              <p>
+                Problem, role, methods and links go here once the project is
+                written.
+              </p>
+            </div>
+          </figure>
+        </div>
+        <ul class="meta">
+          <li><b>保留</b>地图首页、所有交互、五个地点</li>
+          <li><b>改变</b>材质、光照、海水、道路、植物、室内、界面</li>
+          <li><b>成本</b>中等：沿用现有 Blender 流程，图片大小相近</li>
+        </ul>
+      </section>
 
-    <section class="direction d-toybox" aria-labelledby="b-title">
-      <div class="direction-head">
-        <p class="kicker">方向 B</p>
-        <h2 id="b-title">Toy diorama · 玩具模型</h2>
-        <p>每种材质换成干净的玩具色（青绿屋顶、奶油墙、浅木色），原纹理只保留约三分之一作为明暗细节；明亮均匀的光，明快的青色海水。界面是圆润的彩色按钮和无衬线字体，每个地点有自己的颜色。</p>
-      </div>
-      <div class="pair">
-        <figure class="stage">
-          <img src="./style-study/toybox-coast.webp" width="1600" height="1200" alt="方向 B：青绿色屋顶、浅木色的工作室，明亮均匀的光，浅色海水。" loading="lazy" />
-          <div class="tip" style="left:24%;top:34%"><strong>Project Studio</strong><small>Projects</small><p>Blueprints and prototypes on the workbench.</p></div>
-        </figure>
-        <figure class="stage room">
-          <img src="./style-study/toybox-studio.webp" width="1200" height="900" alt="方向 B 工作室内景：浅木色与奶油色，光线柔和。" loading="lazy" />
-          <div class="card"><p class="eyebrow">Project Studio / Blueprint 01</p><h3>Project title</h3><p>Problem, role, methods and links go here once the project is written.</p></div>
-        </figure>
-      </div>
-      <ul class="meta"><li><b>优点</b>最轻快，最像 Townscaper</li><li><b>风险</b>容易回到你之前否定的“平涂”感；简化的建筑和细节丰富的树木不太协调</li><li><b>成本</b>中等</li></ul>
-    </section>
+      <section class="direction d-toybox" aria-labelledby="b-title">
+        <div class="direction-head">
+          <p class="kicker">方向 B</p>
+          <h2 id="b-title">Toy diorama · 玩具模型</h2>
+          <p>
+            每种材质换成干净的玩具色（青绿屋顶、奶油墙、浅木色），原纹理只保留约三分之一作为明暗细节；明亮均匀的光，明快的青色海水。界面是圆润的彩色按钮和无衬线字体，每个地点有自己的颜色。
+          </p>
+        </div>
+        <div class="pair">
+          <figure class="stage">
+            <img
+              src="./style-study/toybox-coast.webp"
+              width="1600"
+              height="1200"
+              alt="方向 B：青绿色屋顶、浅木色的工作室，明亮均匀的光，浅色海水。"
+              loading="lazy"
+            />
+            <div class="tip" style="left: 24%; top: 34%">
+              <strong>Project Studio</strong><small>Projects</small>
+              <p>Blueprints and prototypes on the workbench.</p>
+            </div>
+          </figure>
+          <figure class="stage room">
+            <img
+              src="./style-study/toybox-studio.webp"
+              width="1200"
+              height="900"
+              alt="方向 B 工作室内景：浅木色与奶油色，光线柔和。"
+              loading="lazy"
+            />
+            <div class="card">
+              <p class="eyebrow">Project Studio / Blueprint 01</p>
+              <h3>Project title</h3>
+              <p>
+                Problem, role, methods and links go here once the project is
+                written.
+              </p>
+            </div>
+          </figure>
+        </div>
+        <ul class="meta">
+          <li><b>优点</b>最轻快，最像 Townscaper</li>
+          <li>
+            <b>风险</b
+            >容易回到你之前否定的“平涂”感；简化的建筑和细节丰富的树木不太协调
+          </li>
+          <li><b>成本</b>中等</li>
+        </ul>
+      </section>
 
-    <section class="direction d-lantern" aria-labelledby="c-title">
-      <div class="direction-head">
-        <p class="kicker">方向 C</p>
-        <h2 id="c-title">Golden-hour lantern · 黄昏灯火</h2>
-        <p>和 A 一样的原始纹理，但太阳很低、阴影很长，海水是深蓝色，窗户亮着暖光。访问后“窗灯亮起”的设计在这个方向最有意义。界面是深色半透明玻璃和暖白文字。</p>
-      </div>
-      <div class="pair">
-        <figure class="stage">
-          <img src="./style-study/lantern-coast.webp" width="1600" height="1200" alt="方向 C：黄昏低角度阳光，长阴影，深蓝海水，工作室窗户亮着暖光。" loading="lazy" />
-          <div class="tip" style="left:24%;top:34%"><strong>Project Studio</strong><small>Projects</small><p>Blueprints and prototypes on the workbench.</p></div>
-        </figure>
-        <figure class="stage room">
-          <img src="./style-study/lantern-studio.webp" width="1200" height="900" alt="方向 C 工作室内景：暖色灯光和深色木头。" loading="lazy" />
-          <div class="card"><p class="eyebrow">Project Studio / Blueprint 01</p><h3>Project title</h3><p>Problem, role, methods and links go here once the project is written.</p></div>
-        </figure>
-      </div>
-      <ul class="meta"><li><b>优点</b>最有氛围，窗灯状态最醒目</li><li><b>风险</b>整页偏暗，recruiter 快速阅读时对比度和手机上的可读性更难保证</li><li><b>成本</b>中等偏高：需要为“未访问/已访问”分别控制窗光</li></ul>
-    </section>
+      <section class="direction d-lantern" aria-labelledby="c-title">
+        <div class="direction-head">
+          <p class="kicker">方向 C</p>
+          <h2 id="c-title">Golden-hour lantern · 黄昏灯火</h2>
+          <p>
+            和 A
+            一样的原始纹理，但太阳很低、阴影很长，海水是深蓝色，窗户亮着暖光。访问后“窗灯亮起”的设计在这个方向最有意义。界面是深色半透明玻璃和暖白文字。
+          </p>
+        </div>
+        <div class="pair">
+          <figure class="stage">
+            <img
+              src="./style-study/lantern-coast.webp"
+              width="1600"
+              height="1200"
+              alt="方向 C：黄昏低角度阳光，长阴影，深蓝海水，工作室窗户亮着暖光。"
+              loading="lazy"
+            />
+            <div class="tip" style="left: 24%; top: 34%">
+              <strong>Project Studio</strong><small>Projects</small>
+              <p>Blueprints and prototypes on the workbench.</p>
+            </div>
+          </figure>
+          <figure class="stage room">
+            <img
+              src="./style-study/lantern-studio.webp"
+              width="1200"
+              height="900"
+              alt="方向 C 工作室内景：暖色灯光和深色木头。"
+              loading="lazy"
+            />
+            <div class="card">
+              <p class="eyebrow">Project Studio / Blueprint 01</p>
+              <h3>Project title</h3>
+              <p>
+                Problem, role, methods and links go here once the project is
+                written.
+              </p>
+            </div>
+          </figure>
+        </div>
+        <ul class="meta">
+          <li><b>优点</b>最有氛围，窗灯状态最醒目</li>
+          <li>
+            <b>风险</b>整页偏暗，recruiter
+            快速阅读时对比度和手机上的可读性更难保证
+          </li>
+          <li><b>成本</b>中等偏高：需要为“未访问/已访问”分别控制窗光</li>
+        </ul>
+      </section>
 
-    <section class="next">
-      <h2>为什么推荐 A</h2>
-      <p>A 第一次真正使用了你上传的素材本身，解决了“不像这些素材”的问题；保持白天的明亮，阅读和手机都更稳妥；暖色和纸张界面让室内外、阅读层成为同一个世界。可以从 C 借一点：已访问的建筑窗户在白天也亮起暖光。</p>
-      <p>样张说明：这是一块缩小的局部海岸，不是最终布局。树木叶片使用球形法线和半透明来避免发黑，但免费版没有原包的风格化 shader，所以树冠仍比宣传图暗一些，全面应用时会继续调整。</p>
-    </section>
+      <section class="next">
+        <h2>为什么推荐 A</h2>
+        <p>
+          A
+          第一次真正使用了你上传的素材本身，解决了“不像这些素材”的问题；保持白天的明亮，阅读和手机都更稳妥；暖色和纸张界面让室内外、阅读层成为同一个世界。可以从
+          C 借一点：已访问的建筑窗户在白天也亮起暖光。
+        </p>
+        <p>
+          样张说明：这是一块缩小的局部海岸，不是最终布局。树木叶片使用球形法线和半透明来避免发黑，但免费版没有原包的风格化
+          shader，所以树冠仍比宣传图暗一些，全面应用时会继续调整。
+        </p>
+      </section>
 
-    <footer>Models by <a href="https://quaternius.com/">Quaternius</a> · Medieval Village and Stylized Nature Standard packs · CC0 1.0 · 静态渲染样张，网页无需运行三维引擎。复现：<code>tools/render_style_study.py</code>、<code>tools/render_style_study_interior.py</code>。</footer>
-  </main>
-</body>
+      <footer>
+        Models by <a href="https://quaternius.com/">Quaternius</a> · Medieval
+        Village and Stylized Nature Standard packs · CC0 1.0 ·
+        静态渲染样张，网页无需运行三维引擎。复现：<code>tools/render_style_study.py</code>、<code>tools/render_style_study_interior.py</code>。
+      </footer>
+    </main>
+  </body>
 </html>

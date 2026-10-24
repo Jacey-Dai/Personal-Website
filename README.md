@@ -1,6 +1,6 @@
 # Personal Website · A Little World
 
-Current visual-redesign brief and Claude handoff: [docs/PRD-visual-redesign.md](docs/PRD-visual-redesign.md). This distinguishes confirmed world/interaction requirements from the visual style now being reconsidered, and records the real English content already supplied.
+Current visual-redesign brief and Claude handoff: [docs/PRD-visual-redesign.md](docs/PRD-visual-redesign.md). Applied direction, tokens and render commands: [docs/visual-redesign.md](docs/visual-redesign.md). This distinguishes confirmed world/interaction requirements from the visual style now being reconsidered, and records the real English content already supplied.
 
 An interactive floating personal island surrounded by an explorable sea. A map-only homepage, five buildings with hover/focus identification, persistent window lights and roof flags, and spatial interiors with objects to open. Read projects as blueprints, experience as museum records, and interests as garden notes. This remains a prototype with explicit personal-content placeholders.
 

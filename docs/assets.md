@@ -2,6 +2,8 @@
 
 ## Assets actually used
 
+Storybook redesign (2026-10): the homepage island (`public/island/storybook-island-day.webp`) and all five rooms (`public/interiors/`) are rendered from the owner's Quaternius Medieval Village and Stylized Nature Standard models with their original textures, by `tools/render_island.py` and `tools/render_interiors.py` (shared helpers in `tools/quaternius_kit.py`). Same pinned source commit and CC0 1.0 licenses; no new external assets. Terrain, sea, foam, greenhouse frame, wheel, boat, noticeboard and furniture are original geometry, mostly wearing the pack's own wood, plaster and brick materials. See `docs/visual-redesign.md`. The notes below describe earlier iterations.
+
 Current spatial layer: the original model-rendered exterior remains; `src/building-layers.json` exports its actual glass faces and roof positions as SVG overlays. `public/interiors/` contains original cutaway-room renders made by `tools/render_interiors.py`. No new external models or licenses are involved. Room object positions are generated with their images. See `docs/spatial-experience.md`.
 
 The active homepage now uses `public/island/soft-island.webp`, built from the same owner-supplied CC0 Medieval and Nature models with softer colors. `tools/render_island.py` assembles the full scene and `tools/prepare_island.py` encodes it and exports projected map anchors. See `docs/framework.md`. The original SVG notes below describe the first iteration only; no SVG map remains in the current homepage.
