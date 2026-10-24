@@ -42,3 +42,13 @@ Palette, fonts, personal name/positioning, final architecture details, case-stud
 - Static pre-rendering keeps page runtime light. HTML supplies map links, keyboard access, previews, visited marks, and differentiated content layers. Building pointer targets duplicate visible keyboard-accessible labels; they are hidden from assistive technology and on mobile.
 - Project draft routes (`#projects/project-01`) preview a real case-study structure but contain no invented projects. Experience, Garden and Currently have their own layouts.
 - Current public name, actual biography, links, resume, and primary language are still awaiting content. Existing English copy remains provisional.
+
+## Visual redesign Phase 1 (style study 02, awaiting choice)
+
+- Following `docs/PRD-visual-redesign.md`, `style-study.html` compares three directions on one coastal sample with the same camera: A Storybook daylight (original Quaternius textures, warm sun, depth-graded sea), B Toy diorama (clean toy colours over 35% texture detail), C Golden-hour lantern (A's textures, low sun, lit windows, dark UI). Each shows the exterior, a hover tooltip, the Project Studio interior and a reading card.
+- Recommended: A. Not applied to the homepage; Phase 2 starts only after the owner picks.
+- Renders: `tools/render_style_study.py` and `tools/render_style_study_interior.py` (bpy 5.1.2 / Blender 5.1, Cycles 64 samples, OIDN). Same pinned source commit and CC0 packs as before; no new external assets.
+
+## Visual redesign applied (direction A)
+
+- 2026-10-24: owner liked A and C, and asked to build one first and add time-based lighting later. A (Storybook daylight) is applied to the island, rooms and interface; C is preserved as the `dusk` preset in the render scripts. Details and reproduction: `docs/visual-redesign.md`.

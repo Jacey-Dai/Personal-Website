@@ -8,6 +8,7 @@ export default defineConfig({
       input: {
         main: fileURLToPath(new URL("./index.html", import.meta.url)),
         artStudy: fileURLToPath(new URL("./art-study.html", import.meta.url)),
+        styleStudy: fileURLToPath(new URL("./style-study.html", import.meta.url)),
       },
     },
   },
