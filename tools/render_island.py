@@ -6,6 +6,7 @@ SOURCES holds `assests/` from the assets/source-packs branch (see docs/framework
 OUTPUT receives island.png, island.blend and map-layout.json. Then run
 tools/export_building_layers.py on island.blend for hit shapes, window lights and flags.
 `dusk` keeps geometry and camera identical, for a later day/night switch.
+samples 0 skips the render and only saves island.blend (for tools/export_island_glb.py).
 """
 import json
 import math
@@ -446,4 +447,5 @@ for key, point in anchors.items():
 (output/'map-layout.json').write_text(json.dumps(layout, indent=2) + '\n')
 scene.render.filepath = str(output/f'island-{light}.png')
 bpy.ops.wm.save_as_mainfile(filepath=str(output/'island.blend'))
-bpy.ops.render.render(write_still=True)
+if samples:
+    bpy.ops.render.render(write_still=True)

@@ -27,11 +27,23 @@ mkdir -p /tmp/island-src && git archive origin/assets/source-packs \
 python3 tools/render_island.py /tmp/island-src /tmp/island day 96          # ~4 min on 4 CPU cores
 python3 tools/export_building_layers.py /tmp/island/island.blend /tmp/island/building-layers.json
 python3 tools/prepare_island.py /tmp/island day
+python3 tools/export_island_glb.py /tmp/island/island.blend public/island/island.glb   # 3D view
 python3 tools/render_interiors.py /tmp/island-src /tmp/rooms day 96        # ~12 min for five rooms
 python3 tools/prepare_interiors.py /tmp/rooms
 ```
 
 Shared helpers (model loading, restyling, foliage normals, lighting presets) live in `tools/quaternius_kit.py`. Change the camera, a building or an object, and regenerate the images, `building-layers.json`, `map-layout.json` and `interior-layout.json` together; never edit coordinates by hand. Window lights come from faces using the pack's `MI_WindowGlass` or the greenhouse's `glass…` material.
+
+## Draggable 3D island
+
+On browsers with WebGL the homepage swaps the painted picture for a real-time view of the same scene (`src/island3d.js`, loaded lazily with three.js). Drag (mouse or one finger) to walk around it, wheel or pinch to move closer, the arrow keys or the ↺ / ↻ / Front view buttons to turn it without a pointer. The tilt stays between 18° and 72° so the island is never seen from below the sea.
+
+- `public/island/island.glb` (≈1.1 MB, Draco) is exported from `island.blend` by `tools/export_island_glb.py`: textures at 512 px WebP, normal/roughness maps dropped, the Hue/Saturation tweaks from `quaternius_kit.restyle()` kept as material extras and reapplied in a shader. `render_island.py … day 0` saves the blend without rendering. The Draco decoder lives in `public/draco/` (copied from three).
+- Sea, foam, sun and sky light are drawn in the browser, following the Blender values of direction A.
+- Building links stay as the accessible hit areas: each frame they are re-shaped from the projected outline of the building's own geometry, so hover, focus, two-tap touch and Enter behave as before. A drag that ends over a building does not open it.
+- Visits light the glass of that building and raise a 3D roof flag; the SVG overlay remains for the painted fallback.
+- Nothing is drawn while the view is still, so there is no continuous animation loop. With reduced motion, turns and flags change without easing.
+- Without WebGL, or if the model fails to load, the painted map stays exactly as before.
 
 ## Day/night later
 

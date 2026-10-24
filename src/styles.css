@@ -1459,3 +1459,73 @@ summary:focus-visible {
     animation: none;
   }
 }
+
+/* Draggable 3D island (src/island3d.js). The painted map stays underneath as the fallback. */
+.island-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.7s;
+}
+.is-3d .map-plane {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  aspect-ratio: auto;
+  transform: none;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  cursor: grab;
+}
+.is-3d .map-plane.is-dragging,
+.is-3d .map-plane.is-dragging .building-surface {
+  cursor: grabbing;
+}
+.is-3d .island-canvas {
+  opacity: 1;
+}
+.is-3d .island-image {
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 0.7s;
+}
+.is-3d #building-states {
+  display: none;
+}
+.view-controls {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  background: #f9fbf1b8;
+  backdrop-filter: blur(10px);
+  border: 1px solid #dae3d3;
+  border-radius: 20px;
+  padding: 0 6px;
+}
+.view-controls[hidden] {
+  display: none;
+}
+.map-controls .view-controls button {
+  min-width: 30px;
+  padding: 6px 8px;
+  border: 0;
+  border-radius: 14px;
+}
+.map-controls .view-controls button[aria-label] {
+  font-size: 15px;
+  line-height: 1;
+}
+.view-controls button:hover {
+  color: var(--accent);
+}
+@media (prefers-reduced-motion: reduce) {
+  .island-canvas,
+  .is-3d .island-image {
+    transition: none;
+  }
+}
