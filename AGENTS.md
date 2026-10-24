@@ -1,5 +1,7 @@
 # Shared working agreement
 
+- For the current visual redesign, read docs/PRD-visual-redesign.md first. The owner is reconsidering the current aesthetics; the older soft-palette instruction below is a historical working direction, not a fixed color requirement. English language, resume, profile and public contact links are already supplied in src/profile.js and public/resume/.
+
 - Preserve the five layers: miniature personal world, island silhouette, creative town, playful facilities, exploration map. The approved direction combines B's floating island with A's sea, boat, pier, and short bridge.
 - Read docs/spatial-experience.md and docs/decisions.md before changing the design. The owner's latest requirements override the earlier framework: map-only homepage, hover/focus/touch identification, physical building changes after visits, and spatial interiors. Keep the approved soft palette.
 - Never invent personal history, project results, employers, metrics, or contact details. Keep missing content visibly marked.
