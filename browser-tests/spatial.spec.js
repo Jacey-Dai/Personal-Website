@@ -86,7 +86,10 @@ test("visiting changes roof and window geometry and persists on reload", async (
   await page.getByRole("button", { name: "Return to island" }).click();
   await expect(page.locator("#room")).toBeHidden();
   await expect(state).toHaveClass(/is-lit/);
-  await expect(state.locator(".roof-flag")).toBeVisible();
+  await expect(page.locator('[data-place="projects"]')).toHaveClass(
+    /is-visited/,
+  );
+  await expect(state.locator(".roof-flag")).toHaveCount(1);
   expect(
     (await state.locator(".window-light").getAttribute("d")).length,
   ).toBeGreaterThan(100);
@@ -156,7 +159,11 @@ test("each interior has objects and its own reading artifact", async ({
       await expect(page.locator(".content-pending")).toBeVisible();
     } else {
       await expect(page.locator(".content-pending")).toHaveCount(0);
-      const content = { about: "Jacey Dai", experience: "Technology Services Help Desk, UIUC", currently: "AI agents and product" }[room];
+      const content = {
+        about: "Jacey Dai",
+        experience: "Technology Services Help Desk, UIUC",
+        currently: "AI agents and product",
+      }[room];
       await expect(page.locator("#reader-content")).toContainText(content);
     }
     await page.keyboard.press("Escape");
@@ -248,6 +255,59 @@ test("reduced motion and direct resume/contact access remain available", async (
   await expect(
     page.getByRole("link", { name: /Email.*jacey.dai827@gmail.com/ }),
   ).toBeVisible();
-  await expect(page.getByRole("link", { name: /LinkedIn.*linkedin.com/ })).toHaveAttribute("href", "https://www.linkedin.com/in/jacey-dai/");
-  await expect(page.getByRole("link", { name: /GitHub.*github.com/ })).toHaveAttribute("href", "https://github.com/Jacey-Dai");
+  await expect(
+    page.getByRole("link", { name: /LinkedIn.*linkedin.com/ }),
+  ).toHaveAttribute("href", "https://www.linkedin.com/in/jacey-dai/");
+  await expect(
+    page.getByRole("link", { name: /GitHub.*github.com/ }),
+  ).toHaveAttribute("href", "https://github.com/Jacey-Dai");
+});
+
+test("the 3D island turns by dragging, and a drag over a building does not enter it", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1100, height: 700 });
+  await page.goto("");
+  await expect(page.locator("body")).toHaveClass(/is-3d/, { timeout: 60000 });
+  await expect(page.locator(".island-canvas")).toBeVisible();
+  await expect(page.locator(".view-controls")).toBeVisible();
+  const studio = page.locator('[data-place="projects"]');
+  const before = await studio.boundingBox();
+  const box = await page.locator(".building-surface").first().boundingBox();
+  const [x, y] = [box.x + box.width / 2, box.y + box.height / 2];
+  await page.mouse.move(x, y);
+  await page.mouse.down();
+  for (let i = 1; i <= 10; i++) await page.mouse.move(x - i * 30, y);
+  await page.mouse.up();
+  await expect(page.locator("#room")).toBeHidden();
+  await expect
+    .poll(async () => Math.abs((await studio.boundingBox()).x - before.x), {
+      timeout: 30000,
+    })
+    .toBeGreaterThan(40);
+  await page.getByRole("button", { name: "Front view" }).click();
+  await expect
+    .poll(async () => Math.abs((await studio.boundingBox()).x - before.x), {
+      timeout: 30000,
+    })
+    .toBeLessThan(3);
+  await page.getByRole("button", { name: "Turn the island right" }).click();
+  await expect
+    .poll(async () => Math.abs((await studio.boundingBox()).x - before.x), {
+      timeout: 30000,
+    })
+    .toBeGreaterThan(40);
+  // A plain click on a building still steps inside after the island has turned.
+  await expect
+    .poll(
+      async () => {
+        const a = (await studio.boundingBox()).x;
+        await page.waitForTimeout(400);
+        return Math.abs((await studio.boundingBox()).x - a);
+      },
+      { timeout: 30000 },
+    )
+    .toBeLessThan(0.5);
+  await studio.locator(".building-surface").click();
+  await expect(page.locator("#room-title")).toHaveText("Project Studio");
 });

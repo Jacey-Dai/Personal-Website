@@ -41,8 +41,33 @@
       <p>Five places. Your own way around.</p>
     </aside>
     <div class="map-controls">
+      <div
+        class="view-controls"
+        role="group"
+        aria-label="Turn the island"
+        hidden
+      >
+        <button
+          id="rotate-left"
+          type="button"
+          aria-label="Turn the island left"
+        >
+          ↺</button
+        ><button id="reset-view" type="button">Front view</button
+        ><button
+          id="rotate-right"
+          type="button"
+          aria-label="Turn the island right"
+        >
+          ↻
+        </button>
+      </div>
       <details class="map-help">
         <summary>How to explore</summary>
+        <p>
+          Drag the island to walk around it; scroll or pinch to move closer. The
+          arrow keys and the ↺ ↻ buttons turn it too.
+        </p>
         <p>
           Hover or focus a building to see its name. Press Enter to step inside.
         </p>

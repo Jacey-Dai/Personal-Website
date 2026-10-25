@@ -15,6 +15,7 @@ let mapFocus = null;
 let objectFocus = null;
 let peek = null;
 let tooltipBuilding = null;
+let island3d = null;
 try {
   const saved = JSON.parse(localStorage.getItem(storageKey) || "[]");
   if (Array.isArray(saved))
@@ -68,6 +69,7 @@ function updateBuildings() {
       el.classList.toggle("is-lit", visited.has(el.dataset.visit)),
     );
   document.querySelector("#reset-lights").hidden = visited.size === 0;
+  island3d?.setVisited(visited);
   try {
     localStorage.setItem(storageKey, JSON.stringify([...visited]));
   } catch {
@@ -81,7 +83,7 @@ function hideTooltip() {
 }
 function showTooltip(element) {
   const p = places.find((p) => p.id === element.dataset.place);
-  if (!p || roomDialog.open) return;
+  if (!p || roomDialog.open || island3d?.dragging) return;
   tooltipBuilding = element;
   tooltip.querySelector("strong").textContent = p.name;
   tooltip.querySelector("small").textContent = p.label;
@@ -146,6 +148,74 @@ document.querySelector("#reset-lights").addEventListener("click", () => {
 if (matchMedia("(hover: none)").matches)
   document.querySelector("#explore-hint").textContent =
     "Tap a building to discover it.";
+
+// The 3D island replaces the painted map once WebGL and the model are ready; the picture stays as fallback.
+function placeBuildings(shapes) {
+  for (const el of document.querySelectorAll("[data-place]")) {
+    const s = shapes[el.dataset.place];
+    if (!s) continue;
+    Object.assign(el.style, {
+      left: `${s.left}%`,
+      top: `${s.top}%`,
+      width: `${s.width}%`,
+      height: `${s.height}%`,
+    });
+    el.style.setProperty("--shape", s.clip);
+    el.style.setProperty("--depth", s.depth);
+  }
+  if (tooltipBuilding) showTooltip(tooltipBuilding);
+}
+async function startIsland3d() {
+  const probe = document.createElement("canvas");
+  if (!probe.getContext("webgl2") && !probe.getContext("webgl")) return;
+  try {
+    const { createIsland3D } = await import("./island3d.js");
+    island3d = await createIsland3D({
+      plane: document.querySelector(".map-plane"),
+      host: document.querySelector("#island-art"),
+      flagColors,
+      reducedMotion: matchMedia("(prefers-reduced-motion: reduce)").matches,
+      onChange: placeBuildings,
+      onDragStart: clearPeek,
+    });
+  } catch (error) {
+    console.warn("Staying on the painted island:", error);
+    return;
+  }
+  document.body.classList.add("is-3d");
+  island3d.resize();
+  island3d.setVisited(visited);
+  document.querySelector(".view-controls").hidden = false;
+  document.querySelector("#explore-hint").textContent = matchMedia(
+    "(hover: none)",
+  ).matches
+    ? "Drag to turn the island. Tap a building to discover it."
+    : "Drag to turn the island. Hover a building to see inside.";
+}
+document
+  .querySelector("#rotate-left")
+  .addEventListener("click", () => island3d?.rotate(-45));
+document
+  .querySelector("#rotate-right")
+  .addEventListener("click", () => island3d?.rotate(45));
+document
+  .querySelector("#reset-view")
+  .addEventListener("click", () => island3d?.reset());
+document.addEventListener("keydown", (event) => {
+  if (!island3d || roomDialog.open || event.altKey || event.metaKey) return;
+  if (event.target.closest?.("input,select,textarea,summary,button")) return;
+  const turn = {
+    ArrowLeft: [-30, 0],
+    ArrowRight: [30, 0],
+    ArrowUp: [0, -10],
+    ArrowDown: [0, 10],
+  }[event.key];
+  if (!turn) return;
+  event.preventDefault();
+  hideTooltip();
+  if (turn[0]) island3d.rotate(turn[0]);
+  else island3d.tilt(turn[1]);
+});
 
 function closeReader() {
   if (readerDialog.open) {
@@ -248,3 +318,4 @@ roomDialog.addEventListener("cancel", (event) => {
 window.addEventListener("hashchange", route);
 updateBuildings();
 route();
+startIsland3d();
