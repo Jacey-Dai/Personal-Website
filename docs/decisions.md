@@ -52,3 +52,9 @@ Palette, fonts, personal name/positioning, final architecture details, case-stud
 ## Visual redesign applied (direction A)
 
 - 2026-10-24: owner liked A and C, and asked to build one first and add time-based lighting later. A (Storybook daylight) is applied to the island, rooms and interface; C is preserved as the `dusk` preset in the render scripts. Details and reproduction: `docs/visual-redesign.md`.
+
+## 2026-11-08 — Hand-modelled storybook houses
+
+- The owner was not satisfied with the kit-built houses (five variations of the same medieval module house). The five destinations are now hand-modelled in `tools/storybook_houses.py`, each with its own silhouette: Project Studio with a sawtooth north-light roof, barn doors and an easel; Experience Museum as a small columned gallery with banners and a copper dome; the round Welcome cottage with a layered sage roof; an octagonal Noticeboard kiosk with a striped awning (the noticeboard now stands beside it); a barrel-vaulted Curiosity Greenhouse with an entrance bay.
+- Same storybook daylight palette, cameras, keys and window glass names, so visited lights, flags, hit shapes and the 3D view work unchanged. Trees, rocks, props and plants still come from the owner's Quaternius packs.
+- `tools/export_island_glb.py` joins each house into one multi-material mesh so the browser draws a few meshes rather than hundreds of parts.
