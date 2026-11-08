@@ -27,6 +27,24 @@ if curves:
     bpy.context.view_layer.objects.active = curves[0]
     bpy.ops.object.convert(target='MESH')
 
+# Each hand-modelled house is hundreds of small parts: bake modifiers and join them into one
+# multi-material mesh per building, so the browser draws a handful of meshes, not hundreds.
+for root in [o for o in bpy.context.scene.objects if 'place' in o]:
+    parts = [o for o in root.children_recursive if o.type == 'MESH']
+    if len(parts) < 2:
+        continue
+    bpy.ops.object.select_all(action='DESELECT')
+    for o in parts:
+        o.select_set(True)
+    bpy.context.view_layer.objects.active = parts[0]
+    bpy.ops.object.convert(target='MESH')
+    bpy.ops.object.parent_clear(type='CLEAR_KEEP_TRANSFORM')
+    bpy.ops.object.join()
+    joined = bpy.context.view_layer.objects.active
+    joined.name = f"{root.name} geometry"
+    joined.parent = root
+    joined.matrix_parent_inverse = root.matrix_world.inverted()
+
 
 def node_color(node):
     """The colour a flat() ramp or plain input settles on, as linear RGBA."""
